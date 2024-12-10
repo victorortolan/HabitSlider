@@ -49,7 +49,7 @@ class _HabitListScreenState extends State<HabitListScreen> {
         habits = savedHabits
             .map((habitString) => Habit(
                   name: habitString,
-                  progress: 0.0, // Initial progress set to 0
+                  progress: 0.0, //progresso inicial deve ser 0
                 ))
             .toList();
       });
@@ -83,7 +83,7 @@ class _HabitListScreenState extends State<HabitListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Habit Tracker'),
+        title: Text('HabitSlider'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -92,14 +92,14 @@ class _HabitListScreenState extends State<HabitListScreen> {
             TextField(
               controller: habitController,
               decoration: InputDecoration(
-                labelText: 'Enter Habit',
+                labelText: 'Digite seu próximo hábito',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: _addHabit,
-              child: Text('Add Habit'),
+              child: Text('Adcionar Hábito'),
             ),
             SizedBox(height: 20),
             Expanded(
@@ -109,9 +109,9 @@ class _HabitListScreenState extends State<HabitListScreen> {
                   return ListTile(
                     title: Text(habits[index].name),
                     subtitle: Text(
-                        'Progress: ${(habits[index].progress * 100).toStringAsFixed(0)}%'),
+                        'Progresso: ${(habits[index].progress * 100).toStringAsFixed(0)}%'),
                     trailing: SizedBox(
-                      width: 150, // Set a fixed width for the slider
+                      width: 150,
                       child: Slider(
                         value: habits[index].progress,
                         min: 0.0,
@@ -123,7 +123,7 @@ class _HabitListScreenState extends State<HabitListScreen> {
                         },
                       ),
                     ),
-                    // If the progress reaches 100%, mark as completed
+                    //se progresso = 100, concluir
                     leading: habits[index].progress == 1.0
                         ? Icon(Icons.check_circle, color: Colors.green)
                         : null,
